@@ -8,11 +8,11 @@ import dropbox
 import pickle
 
 
-with open('token.txt', "r", encoding="utf-8") as file:
+'''with open('token.txt', "r", encoding="utf-8") as file:
     TOKEN = file.read()
-dbx = dropbox.Dropbox(TOKEN)
+dbx = dropbox.Dropbox(TOKEN)'''
 
-#dbx = dropbox.Dropbox(st.secrets['TOKEN'])
+dbx = dropbox.Dropbox(st.secrets['TOKEN'])
 
 try:
     with open('sources/datos_procesados_dx.pkl', "wb") as f:
