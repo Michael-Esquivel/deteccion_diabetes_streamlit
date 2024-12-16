@@ -13,6 +13,7 @@ import pickle
 dbx = dropbox.Dropbox(TOKEN)'''
 
 dbx = dropbox.Dropbox(st.secrets['TOKEN'])
+export_state = 0
 
 try:
     with open('sources/datos_procesados_dx.pkl', "wb") as f:
@@ -71,12 +72,11 @@ def exportar_datos(name, dato):
       
 
 def get_export_state(): #Verificar si el boton 'Exportar datos' de 'Digitar datos' se oprimio
-    with open('sources/export_state.txt', 'r') as f:
-        return int(f.read())
+    return export_state
 
 def change_export_state(value):
-    with open('sources/export_state.txt', 'w') as f:
-        f.write(value)
+    global export_state
+    export_state = value
 
 def title(titulo):
     st.markdown(
