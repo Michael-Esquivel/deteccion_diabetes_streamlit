@@ -11,7 +11,7 @@ if "menu" not in st.session_state:
 
 if st.session_state["menu"] == "inicio":
 
-    change_export_state('0')
+    change_export_state(0)
     st.markdown(
         """<div style="background-color:#2C3E50;padding:10px;border-radius:10px;text-align:center;margin-bottom:20px;">
             <h2 style="color:white;">¡Aplicación para la Predicción de Diabetes!</h2>
@@ -128,7 +128,7 @@ elif st.session_state["menu"] == "digitacion":
         # Botón para enviar
         if st.button("Predecir", key=7):            
             try:
-                change_export_state('0')
+                change_export_state(0)
                 valores_lista = list(valores_ingresados.values())
                 valores_lista = [float(str(i).replace(',', '.')) for i in valores_lista] #En caso de recibir int o str con ','
                 
@@ -149,7 +149,7 @@ elif st.session_state["menu"] == "digitacion":
     with c2:
         # Botón para exportar datos
         if st.button("Exportar datos", key=7.1):
-            change_export_state('1')
+            change_export_state(1)
             
         if get_export_state():
             try:
@@ -160,7 +160,7 @@ elif st.session_state["menu"] == "digitacion":
 
                 if file_name != "":
                     exportar_datos(file_name, valores_lista)
-                    change_export_state('0')
+                    change_export_state(0)
             except:
                 error = True   
                     
@@ -173,7 +173,7 @@ elif st.session_state["menu"] == "digitacion":
 
     # Subida de archivo
     if st.button("📤 Subir archivo"):
-        change_export_state('0')
+        change_export_state(0)
         cambiar_menu("prediccion")
 
     # Botón para regresar al menu principal
